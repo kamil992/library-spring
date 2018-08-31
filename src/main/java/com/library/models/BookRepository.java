@@ -2,7 +2,7 @@ package com.library.models;
 
 import java.util.List;
 
-public class BookDaoImpl implements BookDao {
+public class BookRepository implements BookDao {
 
 	@Override
 	public List<Book> getListOfBooks() {
