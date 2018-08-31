@@ -37,6 +37,17 @@ public class AppConfig implements WebMvcConfigurer {
 	private Logger logger = Logger.getLogger(getClass().getName());
 	
 	// define a bean for ViewResolver
+		@Bean
+		public ViewResolver viewResolver(){
+			
+			InternalResourceViewResolver internalResourceViewResolver = 
+					new InternalResourceViewResolver();
+			
+			internalResourceViewResolver.setPrefix("/WEB-INF/view/");
+			internalResourceViewResolver.setSuffix(".jsp");
+			
+			return internalResourceViewResolver;
+		}
 
 	@Bean
 	public DataSource getDataSource() {
