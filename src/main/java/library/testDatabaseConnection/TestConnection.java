@@ -1,4 +1,4 @@
-package com.library.testDatabaseConnection;
+package library.testDatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

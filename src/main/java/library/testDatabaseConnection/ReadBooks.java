@@ -1,4 +1,4 @@
-package com.library.testDatabaseConnection;
+package library.testDatabaseConnection;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.library.models.Book;
+import library.models.Book;
 
 
 public class ReadBooks {
