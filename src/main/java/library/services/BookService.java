@@ -1,20 +1,19 @@
-package library.models.services;
+package library.services;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import library.models.Book;
-import library.models.BookRepository;
+
 
 @Service
 public class BookService {
 	
 	@Autowired
-	BookRepository bookRepository;
+	library.dao.BookRepository bookRepository;
 	
 	@Transactional
 	public List<Book> getBooksList(){

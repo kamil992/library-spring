@@ -7,31 +7,39 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@Table(name="book")
 @Entity
-@Table(name = "book")
 public class Book {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name="id")
 	private int id;
 	
-	@Column(name = "title")
+	@Column(name="title")
 	private String title;
 	
-	@Column(name = "author")
+	@Column(name="author")
 	private String author;
 	
-	@Column(name = "publication_year")
+	@Column(name="publication_year")
 	private int year;
 	
-	@Column(name = "publishing_house")
+	@Column(name="publishing_house")
 	private String publisher;
 	
-	@Column(name = "description")
+	@Column(name="description")
 	private String description;
 	
 	public Book(){}
+	
+	public Book(String title, String author, int year, String publisher, String description){
+		this.title = title;
+		this.author = author;
+		this.year = year;
+		this.publisher = publisher;
+		this.description = description;
+	}
 
 	public int getId() {
 		return id;

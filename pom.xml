@@ -2,8 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.luv2code.springdemo</groupId>
-	<artifactId>spring-crm-rest</artifactId>
+	<groupId>com.library</groupId>
+	<artifactId>library-spring1</artifactId>
 	<version>1.0.0</version>
 	<packaging>war</packaging>
 
@@ -20,6 +20,12 @@
 	<dependencies>
 
 		<!-- Spring -->
+		<dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-aop</artifactId>
+    		<version>5.0.8.RELEASE</version>
+        </dependency>
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -99,7 +105,7 @@
 
 	<build>
 
-		<finalName>spring-crm-rest</finalName>
+		<finalName>library-spring1</finalName>
 
 		<plugins>
 

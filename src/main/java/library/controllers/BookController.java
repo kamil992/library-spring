@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import library.models.Book;
-import library.models.services.BookService;
+import library.services.BookService;
 
 @Controller
 public class BookController {
 
 	@Autowired
-	BookService bookService;
+	private BookService bookService;
 	
 	
-	@GetMapping("/")
+	@GetMapping("/books")
 	public String getBooks(Model model){
 		
 		List<Book> booksList = bookService.getBooksList();

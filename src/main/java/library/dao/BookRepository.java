@@ -1,12 +1,14 @@
-package library.models;
+package library.dao;
 
 import java.util.List;
 
-import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import library.models.Book;
 
 @Repository
 public class BookRepository implements BookDao {
@@ -19,7 +21,7 @@ public class BookRepository implements BookDao {
 		
 		Session session = sessionFactory.getCurrentSession();
 		
-		Query<Book> booksFromDatabase = session.createQuery("from book order by title", Book.class);
+		Query<Book> booksFromDatabase = session.createQuery("from Book order by title", Book.class);
 		
 		List<Book> listOfBooks = booksFromDatabase.getResultList();
 		
