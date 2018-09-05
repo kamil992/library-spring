@@ -16,7 +16,7 @@
 
 <hr>
 <div>
-	<table>
+	<table class="table table-dark">
 	
 	<tr>
 		<th>TITLE</th>
@@ -30,7 +30,7 @@
 	
 	<tr>
 		<td> ${books.title} </td>
-		<td> ${books.author} </td>
+		<td> <a ref="/">${books.author}</a> </td>
 		<td> ${books.year} </td>
 		<td> ${books.publisher}</td>
 		<td> ${books.description}</td>
@@ -42,8 +42,14 @@
 </div>
 
 <style>
+	tr{
+	margin: 10px;
+	}
+	th{
+	margin: 10px;
+	}
 	td{
-	margin: 4px;
+	margin: 10px;
 	}
 </style>
 </body>
