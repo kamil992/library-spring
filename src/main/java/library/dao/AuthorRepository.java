@@ -3,9 +3,11 @@ package library.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import library.models.Author;
 
+@Repository
 public class AuthorRepository implements AuthorDao {
 	
 	@Autowired

@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Table(name="book")
@@ -20,7 +22,7 @@ public class Book {
 	private String title;
 	
 	@Column(name="author")
-	private String author;
+	private String authorName;
 	
 	@Column(name="publication_year")
 	private int year;
@@ -31,11 +33,15 @@ public class Book {
 	@Column(name="description")
 	private String description;
 	
+	@ManyToOne
+	@JoinColumn(name = "author_id")
+	private Author author;
+	
 	public Book(){}
 	
-	public Book(String title, String author, int year, String publisher, String description){
+	public Book(String title, String authorName, int year, String publisher, String description){
 		this.title = title;
-		this.author = author;
+		this.authorName = authorName;
 		this.year = year;
 		this.publisher = publisher;
 		this.description = description;
@@ -57,12 +63,12 @@ public class Book {
 		this.title = title;
 	}
 
-	public String getAuthor() {
-		return author;
+	public String getAuthorName() {
+		return authorName;
 	}
 
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
 	}
 
 	public int getYear() {
@@ -87,6 +93,14 @@ public class Book {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Author getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(Author author) {
+		this.author = author;
 	}
 
 	@Override

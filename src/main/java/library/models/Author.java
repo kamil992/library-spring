@@ -1,10 +1,13 @@
 package library.models;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -28,6 +31,8 @@ public class Author {
 	@Column(name = "description")
 	private String description;
 	
+	@OneToMany(mappedBy = "author")
+	private List<Book> booksList;
 	
 	public Author(){}
 	
@@ -76,6 +81,16 @@ public class Author {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	
+
+	public List<Book> getBooksList() {
+		return booksList;
+	}
+
+	public void setBooksList(List<Book> booksList) {
+		this.booksList = booksList;
 	}
 
 	@Override

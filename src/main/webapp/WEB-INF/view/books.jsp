@@ -15,30 +15,26 @@
 <h3>List of Books</h3>
 
 <hr>
-<div>
-	<table class="table table-dark">
-	
-	<tr>
-		<th>TITLE</th>
-	    <th>AUTHOR</th>
-		<th>YEAR</th>
-		<th>PUBLISHER</th>
-		<th>DESCRIPTION</th>
-	</tr>
-	
+
+<div class="container-fluid">
+
 	<c:forEach var="books" items="${booksList}">
 	
-	<tr>
-		<td> ${books.title} </td>
-		<td> <a ref="/">${books.author}</a> </td>
-		<td> ${books.year} </td>
-		<td> ${books.publisher}</td>
-		<td> ${books.description}</td>
-	</tr>
+	<div class="card w-100">
+  		<div class="card-body">
+    		<div class="card-title">
+    			<h5>Title: ${books.title}</h5>
+    			<h7>Author: ${books.authorName}</h3>
+    		</div>
+    		<div class="card-text">
+    			<p>Description: ${books.description}</p>
+    		</div>
+    		<a href="#" class="btn btn-primary">View more</a>
+  		</div>
+	</div>
 	
 	</c:forEach>
 	
-	</table>
 </div>
 
 <style>

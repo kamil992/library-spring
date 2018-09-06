@@ -32,10 +32,6 @@ public class BookController {
 		return "books";
 	}
 	
-	@GetMapping("/author/{id}")
-	public String getAuthor( Model model){
-		
-		return null;
-	}
+
 	
 }
