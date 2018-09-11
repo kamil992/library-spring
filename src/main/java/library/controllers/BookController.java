@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import library.models.Book;
 import library.services.AuthorService;
@@ -32,6 +32,20 @@ public class BookController {
 		return "books";
 	}
 	
-
+	@GetMapping("/author/{authorId}")
+	public String getAuthor(@PathVariable("authorId") int id,
+							Model model){
+		
+		
+		model.addAttribute("bookList", authorService.getAuthor(id).getBooksList());
+		
+		try{
+			model.addAttribute("author", authorService.getAuthor(id));
+		}catch(NullPointerException e){
+			return "books";
+		}
+	
+		return "/author";
+	}
 	
 }

@@ -19,11 +19,8 @@ public class Author {
 	@Column(name = "id")
 	private int id;
 	
-	@Column(name = "first_name")
-	private String firstName;
-	
-	@Column(name = "last_name")
-	private String lastName;
+	@Column(name = "full_name")
+	private String fullName;
 	
 	@Column(name = "life_date")
 	private String lifeDate;
@@ -36,9 +33,8 @@ public class Author {
 	
 	public Author(){}
 	
-	public Author(String firstName, String lastName, String lifeDate, String description){
-		this.firstName = firstName;
-		this.lastName = lastName;
+	public Author(String fullName, String lifeDate, String description){
+		this.fullName = fullName;
 		this.lifeDate = lifeDate;
 		this.description = description;
 	}
@@ -51,21 +47,15 @@ public class Author {
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getFullName() {
+		return fullName;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirstName(String fullName) {
+		this.fullName = fullName;
 	}
 
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+	
 
 	public String getLifeDate() {
 		return lifeDate;
@@ -95,7 +85,7 @@ public class Author {
 
 	@Override
 	public String toString() {
-		return "Author [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", lifeDate=" + lifeDate
+		return "Author [id=" + id + ", name=" + fullName + ", lifeDate=" + lifeDate
 				+ ", description=" + description + "]";
 	}
 	

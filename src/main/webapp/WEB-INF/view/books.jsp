@@ -24,7 +24,7 @@
   		<div class="card-body">
     		<div class="card-title">
     			<h5>Title: ${books.title}</h5>
-    			<h7>Author: ${books.authorName}</h3>
+    			<h7>Author: <a href="${pageContext.request.contextPath}/author/${books.author.id}">${books.author.fullName}</a></h7>
     		</div>
     		<div class="card-text">
     			<p>Description: ${books.description}</p>

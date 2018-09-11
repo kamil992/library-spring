@@ -21,8 +21,6 @@ public class Book {
 	@Column(name="title")
 	private String title;
 	
-	@Column(name="author")
-	private String authorName;
 	
 	@Column(name="publication_year")
 	private int year;
@@ -39,9 +37,9 @@ public class Book {
 	
 	public Book(){}
 	
-	public Book(String title, String authorName, int year, String publisher, String description){
+	public Book(String title, Author author, int year, String publisher, String description){
+		this.author = author;
 		this.title = title;
-		this.authorName = authorName;
 		this.year = year;
 		this.publisher = publisher;
 		this.description = description;
@@ -63,13 +61,6 @@ public class Book {
 		this.title = title;
 	}
 
-	public String getAuthorName() {
-		return authorName;
-	}
-
-	public void setAuthorName(String authorName) {
-		this.authorName = authorName;
-	}
 
 	public int getYear() {
 		return year;
