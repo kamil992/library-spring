@@ -37,7 +37,7 @@ public class BookController {
 							Model model){
 		
 		
-		model.addAttribute("bookList", authorService.getAuthor(id).getBooksList());
+		//model.addAttribute("listOfBooks", authorService.getAuthor(id).getBooksList());
 		
 		try{
 			model.addAttribute("author", authorService.getAuthor(id));

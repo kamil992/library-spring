@@ -5,11 +5,47 @@
 <html>
 <head>
 <title>library</title>
+
 <link rel="stylesheet" 
  	   href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
  	   integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous" />
 </head>
-<body>
 
+<body>
+	<div class="container-fluid">
+	<table>
+		<tr>
+  			<td><img id="photo"  src="${author.picture}" /></td>
+  			<td class="author"> ${author.fullName} (${author.lifeDate})
+  				 ${author.description}</td>
+  		</tr>
+  	</table>
+  		
+  	
+  		
+  
+	</div>
+	
+	
+	
+	
+	
+	
+	<style>
+	
+	body{
+		margin: 10px;}
+	
+	#photo{
+		height: 280px;
+		width: 250px;'}
+		
+	td.author{
+		text-align: left;
+		min-width: 450px;
+		min-height: 650px;
+		padding: 5px;}
+	
+	</style>
 </body>
 </html>
