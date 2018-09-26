@@ -21,8 +21,9 @@
   		</tr>
   	</table>
   		
-  	
-  		
+ 	<c:forEach var="books" items="${listOfBooks}">
+ 		<p> ${books.title}</p>
+ 	</c:forEach>
   
 	</div>
 	

@@ -1,5 +1,6 @@
 package library.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import library.models.Author;
 import library.models.Book;
 import library.services.AuthorService;
 import library.services.BookService;
@@ -20,6 +22,7 @@ public class BookController {
 	
 	@Autowired
 	private AuthorService authorService;
+	
 	
 	
 	@GetMapping("/books")
@@ -35,17 +38,33 @@ public class BookController {
 	@GetMapping("/author/{authorId}")
 	public String getAuthor(@PathVariable("authorId") int id,
 							Model model){
+	
+		Author author = authorService.getAuthor(id);
+
+		//let's get all authors books
+		List<Book> booksList = bookService.getBooksList();
+		List<Book> list = getAuthorsBooks(booksList, id);	
+		model.addAttribute("listOfBooks", list);
 		
-		
-		//model.addAttribute("listOfBooks", authorService.getAuthor(id).getBooksList());
 		
 		try{
-			model.addAttribute("author", authorService.getAuthor(id));
+			model.addAttribute("author", author);
 		}catch(NullPointerException e){
 			return "books";
 		}
 	
 		return "/author";
+	}
+	
+	
+	private static List<Book> getAuthorsBooks(List<Book> listOfBooks,int authorId){
+		List<Book> list = new ArrayList<>();
+		for(Book b : listOfBooks){
+			if(b.getAuthor().getId() == authorId){
+				list.add(b);
+			}
+		}
+		return list;
 	}
 	
 }
