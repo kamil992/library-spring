@@ -16,12 +16,31 @@
 </head>
 
 <body>
-	<div>
-		<h4>${book.title} (${book.year })</h4>
-		<p>${book.author.fullName}</p>
-		<p>${book.description}</p>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+				<img id="photo"  src="${book.picture}" />
+			</div>
+			<div class="col-sm-9">
+				<h5>${book.title} (${book.year})</h5>
+				<p><a href="${pageContext.request.contextPath}/author/${book.author.id}">${book.author.fullName}</a></p>
+				<p>${book.description}</p>
+			</div>
+		</div>
 	</div>
 
 
+<style>
+	
+	body{
+		margin: 10px;}
+	
+	#photo{
+		height: 280px;
+		width: 250px;}
+		
+		
+	
+	</style>
 </body>
 </html>

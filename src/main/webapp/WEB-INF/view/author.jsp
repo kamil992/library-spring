@@ -12,19 +12,23 @@
 </head>
 
 <body>
-	<div class="container-fluid">
-	<table>
-		<tr>
-  			<td><img id="photo"  src="${author.picture}" /></td>
-  			<td class="author"> ${author.fullName} (${author.lifeDate})
-  				 ${author.description}</td>
-  		</tr>
-  	</table>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+  				<img id="photo"  src="${author.picture}" />
+  			</div>
+  			<div class="col-sm-9">
+  				 <h5 class="author">${author.fullName}</h5>
+  				 <h7>${author.lifeDate}</h7>
+  				 <p>${author.description}</p>
+  			 </div>
+  		</div>
+  		<hr>
   	
-  	<h7>Books:</h7>
+  	<h7>Books:</h7><br>
  	<c:forEach var="books" items="${listOfBooks}">
  	
- 		<p> ${books.title} (${books.year})</p>
+ 		<a href="${pageContext.request.contextPath}/book/${books.id}"> ${books.title}</a> (${books.year})<br/>
  	</c:forEach>
   
 	</div>
@@ -41,13 +45,10 @@
 	
 	#photo{
 		height: 280px;
-		width: 250px;'}
+		width: 250px;}
 		
 	td.author{
-		text-align: left;
-		min-width: 450px;
-		min-height: 650px;
-		padding: 5px;}
+		
 	
 	</style>
 </body>

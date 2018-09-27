@@ -36,6 +36,9 @@ public class Book {
 	@JoinColumn(name = "author_id")
 	private Author author;
 	
+	@Column(name="picture")
+	private String picture;
+	
 	public Book(){}
 	
 	public Book(String title, Author author, int year, String publisher, String description){
@@ -93,6 +96,15 @@ public class Book {
 
 	public void setAuthor(Author author) {
 		this.author = author;
+	}
+	
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 
 	@Override
