@@ -1,4 +1,4 @@
-package library.models;
+package library.models.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

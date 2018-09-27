@@ -1,6 +1,7 @@
 package library.controllers;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import library.models.Author;
-import library.models.Book;
-import library.services.AuthorService;
-import library.services.BookService;
+import library.models.entity.Author;
+import library.models.entity.Book;
+import library.models.services.AuthorService;
+import library.models.services.BookService;
 
 @Controller
 public class BookController {
@@ -57,13 +58,14 @@ public class BookController {
 	}
 	
 	
-	private static List<Book> getAuthorsBooks(List<Book> listOfBooks,int authorId){
+	private static List<Book> getAuthorsBooks(List<Book> listOfBooks, int authorId){
 		List<Book> list = new ArrayList<>();
 		for(Book b : listOfBooks){
 			if(b.getAuthor().getId() == authorId){
 				list.add(b);
 			}
 		}
+		Collections.sort(list, (o1,o2) -> o1.getYear() - o2.getYear());
 		return list;
 	}
 	

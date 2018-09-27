@@ -20,9 +20,11 @@
   				 ${author.description}</td>
   		</tr>
   	</table>
-  		
+  	
+  	<h7>Books:</h7>
  	<c:forEach var="books" items="${listOfBooks}">
- 		<p> ${books.title}</p>
+ 	
+ 		<p> ${books.title} (${books.year})</p>
  	</c:forEach>
   
 	</div>

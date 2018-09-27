@@ -1,8 +1,8 @@
-package library.dao;
+package library.models.dao;
 
 import java.util.List;
 
-import library.models.Book;
+import library.models.entity.Book;
 
 public interface BookDao {
 	

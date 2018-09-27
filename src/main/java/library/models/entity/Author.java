@@ -1,4 +1,4 @@
-package library.models;
+package library.models.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import library.services.BookService;
+import library.models.services.BookService;
 
 @Entity
 @Table(name = "author")
@@ -91,14 +91,14 @@ public class Author {
 		this.booksList = booksList;
 	}
 	
-	public void addBook(Book book){
-		if(booksList == null){
-			booksList = new ArrayList<>();
-		}
-		
-		booksList.add(book);
-		book.setAuthor(this);
-	}
+//	public void addBook(Book book){
+//		if(booksList == null){
+//			booksList = new ArrayList<>();
+//		}
+//		
+//		booksList.add(book);
+//		book.setAuthor(this);
+//	}
 	
 
 	public String getPicture() {
