@@ -20,5 +20,17 @@ public class BookService {
 		
 		return bookRepository.getListOfBooks();
 	}
+	
+	@Transactional
+	public Book getBook(int id){
+		return bookRepository.getBook(id);
+	}
+	
+	//return all books of choosen author
+	@Transactional
+	public List<Book> getAuthorBooks(int authorId){
+		
+		return bookRepository.getAuthorBooks(authorId);
+	}
 
 }

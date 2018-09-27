@@ -28,4 +28,25 @@ public class BookRepository implements BookDao {
 		return listOfBooks;
 	}
 
+	@Override
+	public Book getBook(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		Book book = session.get(Book.class, id);
+		return book;
+	}
+
+	@Override
+	public List<Book> getAuthorBooks(int authorId) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		Query<Book> booksFromDatabase = session.createQuery("from Book where author_id=" + authorId + 
+				"order by publication_year", Book.class);
+		
+		List<Book> listOfBooks = booksFromDatabase.getResultList();
+		
+		return listOfBooks;
+	}
+
 }

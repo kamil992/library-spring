@@ -23,13 +23,12 @@
 	<div class="card w-100">
   		<div class="card-body">
     		<div class="card-title">
-    			<h5>Title: ${books.title}</h5>
+    			<h5>Title: <a href="${pageContext.request.contextPath}/book/${books.id}"> ${books.title}</a></h5>
     			<h7>Author: <a href="${pageContext.request.contextPath}/author/${books.author.id}">${books.author.fullName}</a></h7>
     		</div>
     		<div class="card-text">
     			<p>Description: ${books.description}</p>
     		</div>
-    		<a href="#" class="btn btn-primary">View more</a>
   		</div>
 	</div>
 	

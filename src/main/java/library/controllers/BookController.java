@@ -27,7 +27,7 @@ public class BookController {
 	
 	
 	@GetMapping("/books")
-	public String getBooks(Model model){
+	public String getAllBooks(Model model){
 		
 		List<Book> booksList = bookService.getBooksList();
 		
@@ -36,37 +36,52 @@ public class BookController {
 		return "books";
 	}
 	
+	@GetMapping("/book/{bookId}")
+	public String getBook(@PathVariable("bookId") int id,
+						   Model model){
+		
+		Book book = bookService.getBook(id);
+		try{
+			model.addAttribute("book", book);
+		}catch(NullPointerException e){
+			return "books";
+		}
+		
+		return "book";
+	}
+	
 	@GetMapping("/author/{authorId}")
 	public String getAuthor(@PathVariable("authorId") int id,
 							Model model){
 	
+		
 		Author author = authorService.getAuthor(id);
-
-		//let's get all authors books
-		List<Book> booksList = bookService.getBooksList();
-		List<Book> list = getAuthorsBooks(booksList, id);	
-		model.addAttribute("listOfBooks", list);
-		
-		
 		try{
 			model.addAttribute("author", author);
 		}catch(NullPointerException e){
 			return "books";
 		}
+
+		//let's get all authors books
+//		List<Book> booksList = bookService.getBooksList();
+//		List<Book> list = getAuthorsBooks(booksList, id);	
+		List<Book> list = bookService.getAuthorBooks(id);
+		model.addAttribute("listOfBooks", list);
+		
 	
 		return "/author";
 	}
 	
 	
-	private static List<Book> getAuthorsBooks(List<Book> listOfBooks, int authorId){
-		List<Book> list = new ArrayList<>();
-		for(Book b : listOfBooks){
-			if(b.getAuthor().getId() == authorId){
-				list.add(b);
-			}
-		}
-		Collections.sort(list, (o1,o2) -> o1.getYear() - o2.getYear());
-		return list;
-	}
+//	private static List<Book> getAuthorsBooks(List<Book> listOfBooks, int authorId){
+//		List<Book> list = new ArrayList<>();
+//		for(Book b : listOfBooks){
+//			if(b.getAuthor().getId() == authorId){
+//				list.add(b);
+//			}
+//		}
+//		Collections.sort(list, (o1,o2) -> o1.getYear() - o2.getYear());
+//		return list;
+//	}
 	
 }
