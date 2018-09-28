@@ -32,5 +32,11 @@ public class BookService {
 		
 		return bookRepository.getAuthorBooks(authorId);
 	}
+	
+	@Transactional
+	public List<Book> getSearchingBook(String searchingTitle){
+		
+		return bookRepository.searchBook(searchingTitle);
+	}
 
 }

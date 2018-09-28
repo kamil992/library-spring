@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import library.models.entity.Author;
 import library.models.entity.Book;
@@ -48,6 +50,16 @@ public class BookController {
 		}
 		
 		return "book";
+	}
+	
+	@PostMapping("/search")
+	public String searchBook(@RequestParam("searchingTitle") String searchingTitle,
+							 Model model){
+		
+		List<Book> bookList = bookService.getSearchingBook(searchingTitle);
+		model.addAttribute("booksList", bookList);
+		
+		return "books";
 	}
 	
 	@GetMapping("/author/{authorId}")

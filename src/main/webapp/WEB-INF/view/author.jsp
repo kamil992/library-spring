@@ -12,6 +12,8 @@
 </head>
 
 <body>
+<h3><a href="${pageContext.request.contextPath}/books">List of Books</a></h3>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-3">
@@ -45,7 +47,7 @@
 	
 	#photo{
 		height: 280px;
-		width: 250px;}
+		width: 230px;}
 		
 	td.author{
 		

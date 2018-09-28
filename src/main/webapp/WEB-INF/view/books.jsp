@@ -12,15 +12,24 @@
 
 <body>
 
-<h3>List of Books</h3>
+<h3><a href="${pageContext.request.contextPath}/books">List of Books</a></h3>
 
 <hr>
 
 <div class="container">
-
+	<div class="content">
+	
+				   
+	<form:form action="search" method="POST">
+            Search book: <input type="text" name="searchingTitle" />
+                
+            <input type="submit" value="Search" class="add-button" />
+    </form:form><br>
+         
+         
 	<c:forEach var="books" items="${booksList}">
 	
-	<div class="card w-100">
+	<div id="card" class="card w-100">
   		<div class="card-body">
     		<div class="card-title">
     			<div class = "row">
@@ -42,18 +51,13 @@
 	</div>
 	
 	</c:forEach>
-	
+
+</div>	
 </div>
 
 <style>
-	tr{
-	margin: 10px;
-	}
-	th{
-	margin: 10px;
-	}
-	td{
-	margin: 10px;
+	#card{
+		height: 220px;
 	}
 	
 	#picture{

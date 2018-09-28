@@ -49,4 +49,22 @@ public class BookRepository implements BookDao {
 		return listOfBooks;
 	}
 
+	@Override
+	public List<Book> searchBook(String searchingTitle) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		Query query = null;
+		
+		if(searchingTitle != null && searchingTitle.trim().length() > 0){
+			query = session.createQuery("from Book where lower(title) like :searchingTitle", Book.class);
+			query.setParameter("searchingTitle", "%" + searchingTitle.toLowerCase() + "%");
+		}
+		else{
+			query = session.createQuery("from Book order by title", Book.class);
+		}
+		
+		List<Book> books = query.getResultList();
+		return books;
+	}
+
 }
