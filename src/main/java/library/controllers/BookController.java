@@ -29,10 +29,8 @@ public class BookController {
 	
 	
 	@GetMapping("/books")
-	public String getAllBooks(Model model){
-		
+	public String getAllBooks(Model model){	
 		List<Book> booksList = bookService.getBooksList();
-		
 		model.addAttribute("booksList", booksList);
 		
 		return "books";
@@ -73,7 +71,6 @@ public class BookController {
 		}catch(NullPointerException e){
 			return "books";
 		}
-
 		//let's get all authors books
 //		List<Book> booksList = bookService.getBooksList();
 //		List<Book> list = getAuthorsBooks(booksList, id);	

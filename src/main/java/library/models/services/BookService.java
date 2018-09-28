@@ -16,8 +16,7 @@ public class BookService {
 	private library.models.repository.BookRepository bookRepository;
 	
 	@Transactional
-	public List<Book> getBooksList(){
-		
+	public List<Book> getBooksList(){		
 		return bookRepository.getListOfBooks();
 	}
 	
@@ -28,14 +27,12 @@ public class BookService {
 	
 	//return all books of choosen author
 	@Transactional
-	public List<Book> getAuthorBooks(int authorId){
-		
+	public List<Book> getAuthorBooks(int authorId){	
 		return bookRepository.getAuthorBooks(authorId);
 	}
 	
 	@Transactional
-	public List<Book> getSearchingBook(String searchingTitle){
-		
+	public List<Book> getSearchingBook(String searchingTitle){	
 		return bookRepository.searchBook(searchingTitle);
 	}
 

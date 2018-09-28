@@ -37,10 +37,10 @@
     					<img id="picture" src="${books.picture}"/>
     				</div>
     				<div class="col-sm-10">
-    					<h5>Title: <a href="${pageContext.request.contextPath}/book/${books.id}"> ${books.title}</a></h5>
-    					<h7>Author: <a href="${pageContext.request.contextPath}/author/${books.author.id}">${books.author.fullName}</a></h7>
+    					<h7><a href="${pageContext.request.contextPath}/book/${books.id}"> ${books.title}</a></h7>
+    					<p id="author">Author: <a href="${pageContext.request.contextPath}/author/${books.author.id}">${books.author.fullName}</a></p>
     					<div class="card-text">
-    						<p>Description: ${books.description}</p>
+    						<p id = "description">${books.description}</p>
     					</div>
     				</div>
     			
@@ -57,12 +57,18 @@
 
 <style>
 	#card{
-		height: 220px;
+		height: 180px;
 	}
 	
 	#picture{
 		height: 140px;
 		width: 100px;
+	}
+	#description{
+		font-size: 12;
+	}
+	#author{
+		font-size: 13;
 	}
 </style>
 </body>

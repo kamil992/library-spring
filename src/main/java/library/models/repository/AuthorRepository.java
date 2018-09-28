@@ -15,10 +15,8 @@ public class AuthorRepository implements AuthorDao {
 	private SessionFactory sessionFactory;
 
 	@Override
-	public Author getAuthor(int id) {
-		
-		Session session = sessionFactory.getCurrentSession();
-		
+	public Author getAuthor(int id) {	
+		Session session = sessionFactory.getCurrentSession();	
 		Author author = session.get(Author.class, id);
 		
 		return author;

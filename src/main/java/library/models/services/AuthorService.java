@@ -14,8 +14,7 @@ public class AuthorService {
 	private AuthorRepository authorRepository;
 	
 	@Transactional
-	public Author getAuthor(int id){
-		
+	public Author getAuthor(int id){	
 		return authorRepository.getAuthor(id);
 	}
 
