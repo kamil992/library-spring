@@ -1,10 +1,11 @@
-package library.models.dao;
+package library.models.repository;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import library.models.dao.AuthorDao;
 import library.models.entity.Author;
 
 @Repository

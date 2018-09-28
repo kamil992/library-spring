@@ -13,6 +13,7 @@
 
 <body>
 <h3><a href="${pageContext.request.contextPath}/books">List of Books</a></h3>
+<hr>
 
 	<div class="container">
 		<div class="row">

@@ -1,4 +1,4 @@
-package library.models.dao;
+package library.models.repository;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import library.models.dao.BookDao;
 import library.models.entity.Book;
 
 @Repository

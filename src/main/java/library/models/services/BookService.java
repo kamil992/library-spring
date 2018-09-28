@@ -13,7 +13,7 @@ import library.models.entity.Book;
 public class BookService {
 	
 	@Autowired
-	private library.models.dao.BookRepository bookRepository;
+	private library.models.repository.BookRepository bookRepository;
 	
 	@Transactional
 	public List<Book> getBooksList(){
