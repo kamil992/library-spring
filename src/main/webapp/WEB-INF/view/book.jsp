@@ -41,7 +41,9 @@
 		height: 280px;
 		width: 230px;}
 		
-		
+		a:link{
+		text-decoration: none;
+	}
 	
 	</style>
 </body>

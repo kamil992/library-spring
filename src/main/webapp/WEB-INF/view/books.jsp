@@ -12,19 +12,35 @@
 
 <body>
 
-<h3><a href="${pageContext.request.contextPath}/books">List of Books</a></h3>
+<h3><a id="title" href="${pageContext.request.contextPath}/books">List of Books</a></h3>
 
 <hr>
 
 <div class="container">
 	<div class="content">
 	
-				   
+	<div id="searchByContainer">
+	<div id="search">	   
 	<form:form action="search" method="POST">
             Search book: <input type="text" name="searchingTitle" />
                 
             <input type="submit" value="Search" class="add-button" />
     </form:form><br>
+    </div>
+    <div  id="category">
+    	 <label id="category-label" for="category">
+          Category:
+          </label>
+           <select id="category-drop" class="dropdown">
+          <option disabled value>Select an option:</option>
+          <option value="">Adventure</option>
+          <option value="">Employee</option>
+          <option value="">Graduate</option>
+          <option value="">Uneployed</option>
+          <option value="">Learner</option>
+          <option value="">Amateur</option></select>
+    </div>
+    </div>
          
          
 	<c:forEach var="books" items="${booksList}">
@@ -70,6 +86,17 @@
 	#author{
 		font-size: 13;
 	}
+	#category{
+		float: left;
+		margin-left: 40px;
+	}
+	#search{
+		float: left;
+	}
+	a:link{
+		text-decoration: none;
+	}
+	
 </style>
 </body>
 </html>

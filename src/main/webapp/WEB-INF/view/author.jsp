@@ -50,9 +50,9 @@
 		height: 280px;
 		width: 230px;}
 		
-	td.author{
-		
-	
+	a:link{
+		text-decoration: none;
+	}
 	</style>
 </body>
 </html>
