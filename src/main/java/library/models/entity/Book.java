@@ -5,10 +5,12 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -39,8 +41,11 @@ public class Book {
 	@JoinColumn(name = "author_id")
 	private Author author;
 	
-	@ManyToMany(mappedBy="books",
+	@ManyToMany(fetch=FetchType.LAZY,
 			cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	@JoinTable(name="categoryofbook",
+				joinColumns= @JoinColumn(name="book_id"),
+				inverseJoinColumns= @JoinColumn(name="category_id"))
 	private List<Category> categories;
 	
 	@Column(name="picture")
@@ -112,6 +117,16 @@ public class Book {
 
 	public void setPicture(String picture) {
 		this.picture = picture;
+	}
+	
+	
+
+	public List<Category> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
 	}
 
 	@Override

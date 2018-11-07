@@ -2,11 +2,15 @@ package library.models.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -14,6 +18,7 @@ import javax.persistence.Table;
 @Table(name="category")
 public class Category {
 	
+	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
@@ -21,8 +26,11 @@ public class Category {
 	@Column(name="name")
 	private String name;
 	
-	@ManyToMany
-	@JoinColumn(name="book")
+	@ManyToMany(fetch=FetchType.LAZY,
+			cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	@JoinTable(name="categoryofbook",
+			joinColumns = @JoinColumn(name="category_id"),
+			inverseJoinColumns = @JoinColumn(name="book_id"))
 	private List<Book> books;
 	
 	public Category(){}
