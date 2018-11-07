@@ -16,9 +16,10 @@ import library.models.entity.Author;
 import library.models.entity.Book;
 import library.models.services.AuthorService;
 import library.models.services.BookService;
+import library.models.services.CategoryService;
 
 @Controller
-public class BookController {
+public class LibraryController {
 
 	@Autowired
 	private BookService bookService;
@@ -26,6 +27,8 @@ public class BookController {
 	@Autowired
 	private AuthorService authorService;
 	
+	@Autowired
+	private CategoryService categoryServce;
 	
 	
 	@GetMapping("/books")
@@ -92,5 +95,12 @@ public class BookController {
 //		Collections.sort(list, (o1,o2) -> o1.getYear() - o2.getYear());
 //		return list;
 //	}
+	
+	@PostMapping("/byCategory")
+	public String searchByCategory(@RequestParam("categoryName") String categoryName,
+								Model model){
+		
+		return null;
+	}
 	
 }
