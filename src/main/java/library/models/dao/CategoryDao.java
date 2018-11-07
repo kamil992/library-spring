@@ -7,5 +7,7 @@ import library.models.entity.Category;
 public interface CategoryDao {
 	
 	public List<Category> getCategoryList();
+	
+	public Category findCategory(String name);
 
 }

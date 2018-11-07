@@ -26,7 +26,7 @@ public class Category {
 	@Column(name="name")
 	private String name;
 	
-	@ManyToMany(fetch=FetchType.LAZY,
+	@ManyToMany(fetch=FetchType.EAGER,
 			cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinTable(name="categoryofbook",
 			joinColumns = @JoinColumn(name="category_id"),

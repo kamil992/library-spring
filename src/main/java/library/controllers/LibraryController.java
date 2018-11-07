@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import library.models.entity.Author;
 import library.models.entity.Book;
+import library.models.entity.Category;
 import library.models.services.AuthorService;
 import library.models.services.BookService;
 import library.models.services.CategoryService;
@@ -31,10 +32,28 @@ public class LibraryController {
 	private CategoryService categoryServce;
 	
 	
-	@GetMapping("/books")
+	@GetMapping("/")
 	public String getAllBooks(Model model){	
 		List<Book> booksList = bookService.getBooksList();
 		model.addAttribute("booksList", booksList);
+		
+		//to show all categories on main page
+		List<Category> categoryList = categoryServce.getCategoryList();
+		model.addAttribute("categories", categoryList);
+		
+		return "books";
+	}
+	
+	@GetMapping("/{categoryName}")
+	public String searchByCategory(@PathVariable("categoryName") String categoryName,
+								Model model){
+		//to show all categories on main page
+	    List<Category> categoryList = categoryServce.getCategoryList();
+		model.addAttribute("categories", categoryList);
+		
+		List<Book> booksOfCategories = categoryServce.findCategory(categoryName).getBooks();
+		
+		model.addAttribute("booksList", booksOfCategories);
 		
 		return "books";
 	}
@@ -96,11 +115,5 @@ public class LibraryController {
 //		return list;
 //	}
 	
-	@PostMapping("/byCategory")
-	public String searchByCategory(@RequestParam("categoryName") String categoryName,
-								Model model){
-		
-		return null;
-	}
 	
 }

@@ -41,7 +41,7 @@ public class Book {
 	@JoinColumn(name = "author_id")
 	private Author author;
 	
-	@ManyToMany(fetch=FetchType.LAZY,
+	@ManyToMany(fetch=FetchType.EAGER,
 			cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinTable(name="categoryofbook",
 				joinColumns= @JoinColumn(name="book_id"),

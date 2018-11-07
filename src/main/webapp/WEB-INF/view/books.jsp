@@ -12,7 +12,7 @@
 
 <body>
 
-<h3><a id="title" href="${pageContext.request.contextPath}/books">List of Books</a></h3>
+<h3><a id="title" href="${pageContext.request.contextPath}/">List of Books</a></h3>
 
 <hr>
 
@@ -27,18 +27,13 @@
             <input type="submit" value="Search" class="add-button" />
     </form:form><br>
     </div>
-    <div  id="category">
-    	 <label id="category-label" for="category">
-          Category:
-          </label>
-           <select id="category-drop" class="dropdown">
-          <option disabled value>Select an option:</option>
-          <option value="">Adventure</option>
-          <option value="">Employee</option>
-          <option value="">Graduate</option>
-          <option value="">Uneployed</option>
-          <option value="">Learner</option>
-          <option value="">Amateur</option></select>
+    
+    <div id="category">
+    	 <label id="category-label" >Category:</label>   
+    	 <a href="${pageContext.request.contextPath}/">All  </a> /      	
+         <c:forEach var="categories" items="${categories}">
+            <a href="${pageContext.request.contextPath}/${categories.name}">${categories.name}</a> /
+          </c:forEach>    
     </div>
     </div>
          
@@ -54,6 +49,13 @@
     				</div>
     				<div class="col-sm-10">
     					<h7><a href="${pageContext.request.contextPath}/book/${books.id}"> ${books.title}</a></h7>
+    					
+    					<p>
+    						<c:forEach var="categs" items="${books.categories}">
+    						<a id="categ" href="${pageContext.request.contextPath}/${categs.name}">${categs.name}</a> /
+    						</c:forEach>
+    					</p>
+    					
     					<p id="author">Author: <a href="${pageContext.request.contextPath}/author/${books.author.id}">${books.author.fullName}</a></p>
     					<div class="card-text">
     						<p id = "description">${books.description}</p>
@@ -95,6 +97,9 @@
 	}
 	a:link{
 		text-decoration: none;
+	}
+	#categ{
+		font-size: 12px;
 	}
 	
 </style>

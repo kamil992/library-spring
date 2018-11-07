@@ -18,5 +18,10 @@ public class CategoryService {
 	public List<Category> getCategoryList(){
 		return categoryRepository.getCategoryList();
 	}
+	
+	@Transactional
+	public Category findCategory(String name){
+		return categoryRepository.findCategory(name);
+	}
 
 }

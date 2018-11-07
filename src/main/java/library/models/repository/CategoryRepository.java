@@ -23,10 +23,19 @@ public class CategoryRepository implements CategoryDao {
 		
 		Session session = sessionFactory.getCurrentSession();
 		
-		Query<Category> categories = session.createQuery("* from Category", Category.class);
+		Query<Category> categories = session.createQuery("from Category order by name", Category.class);
 		categoryList = categories.getResultList();
 		
 		return categoryList;
+	}
+
+	@Override
+	public Category findCategory(String name) {
+		Session session = sessionFactory.getCurrentSession();
+		Query<Category> category = session.createQuery("from Category where name='" + name + "'", Category.class);
+		Category choosenCategory = category.getSingleResult();
+		
+		return choosenCategory;
 	}
 
 }
