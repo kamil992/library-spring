@@ -7,12 +7,12 @@
 <link rel="stylesheet" 
  	   href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
  	   integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous" />
-
+<link href="https://fonts.googleapis.com/css?family=Lobster&amp;subset=latin-ext" rel="stylesheet">
 </head>
 
 <body>
 
-<h3><a id="title" href="${pageContext.request.contextPath}/">List of Books</a></h3>
+<h3><a id="title" href="${pageContext.request.contextPath}/">Library</a></h3>
 
 <hr>
 
@@ -22,20 +22,20 @@
 	<div id="searchByContainer">
 	<div id="search">	   
 	<form:form action="search" method="POST">
-            Search book: <input type="text" name="searchingTitle" />
-                
+            <input type="text" name="searchingTitle" />                
             <input type="submit" value="Search" class="add-button" />
     </form:form><br>
     </div>
     
     <div id="category">
-    	 <label id="category-label" >Category:</label>   
+    	 <label id="category-label" ></label>   
     	 <a href="${pageContext.request.contextPath}/">All  </a> /      	
          <c:forEach var="categories" items="${categories}">
             <a href="${pageContext.request.contextPath}/${categories.name}">${categories.name}</a> /
           </c:forEach>    
     </div>
     </div>
+
          
          
 	<c:forEach var="books" items="${booksList}">
@@ -52,7 +52,7 @@
     					
     					<p>
     						<c:forEach var="categs" items="${books.categories}">
-    						<a id="categ" href="${pageContext.request.contextPath}/${categs.name}">${categs.name}</a> /
+    						<a id="categ" href="${pageContext.request.contextPath}/${categs.name}">${categs.name}</a>
     						</c:forEach>
     					</p>
     					
@@ -74,6 +74,12 @@
 </div>
 
 <style>
+	#title{
+		font-family: 'Lobster', sans-serif;
+		font-size: 54px;
+		font-weight: 400;
+		margin: 10px;
+	}
 	#card{
 		height: 180px;
 	}

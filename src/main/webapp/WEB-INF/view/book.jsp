@@ -10,13 +10,13 @@
 <link rel="stylesheet" 
  	   href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
  	   integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous" />
-
+<link href="https://fonts.googleapis.com/css?family=Lobster&amp;subset=latin-ext" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
 
 <body>
-<h3><a href="${pageContext.request.contextPath}/">List of Books</a></h3>
+<h3 id="title"><a href="${pageContext.request.contextPath}/">Library</a></h3>
 <hr>
 	<div class="container">
 		<div class="row">
@@ -32,7 +32,14 @@
 	</div>
 
 
-<style>
+<style> 
+
+	#title{
+		font-family: 'Lobster', sans-serif;
+		font-size: 54px;
+		font-weight: 400;
+		margin: 10px;
+	}
 	
 	body{
 		margin: 10px;}
