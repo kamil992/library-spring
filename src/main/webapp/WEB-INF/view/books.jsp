@@ -13,7 +13,7 @@
 <body>
 
 <h3><a id="title" href="${pageContext.request.contextPath}/">Library</a></h3>
-
+<a href="${pageContext.request.contextPath}/register">registration</a>
 <hr>
 
 <div class="container">

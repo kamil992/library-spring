@@ -1,25 +1,48 @@
 package library.models.repository;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.hibernate.query.criteria.internal.CriteriaUpdateImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import library.models.dao.UserDao;
 import library.models.entity.User;
+import library.models.form.RegisterForm;
 import library.models.services.RegisterStatus;
 
 @Repository
 public class UserRepository implements UserDao{
 	
 	@Autowired
-	SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
+	
 
 	@Override
-	public RegisterStatus registerUser(User user) {
+	public RegisterStatus registerUser(RegisterForm registerForm) {
+		Session session = sessionFactory.getCurrentSession();
 		
-		return null;
+		List<User> userLogin = session.createQuery("from User where login='" + registerForm.getLogin()+ "'", User.class)
+				.getResultList();
+		if(!userLogin.isEmpty()){
+			return RegisterStatus.BUSY_LOGIN;
+		}
+		
+		List<User> userEmail = session.createQuery("from User where email='" + registerForm.getEmail()+ "'", User.class)
+				.getResultList();
+		if(!userEmail.isEmpty()){
+			return RegisterStatus.BUSY_EMAIL;
+		}
+		
+		User newUser = new User(registerForm);
+		
+		session.save(newUser);
+		return RegisterStatus.OK;
+		
 	}
 
 	@Override

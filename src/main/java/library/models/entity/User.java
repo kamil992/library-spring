@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Email;
+
+import library.models.form.RegisterForm;
+
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -31,6 +34,14 @@ public class User {
 	@Email
 	@Column(name="email")
 	private String email;
+	
+	public User(){}
+	
+	public User(RegisterForm registerForm){
+		this.login = registerForm.getLogin();
+		this.password = registerForm.getPassword();
+		this.email = registerForm.getEmail();
+	}
 
 	public int getId() {
 		return id;
