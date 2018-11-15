@@ -11,7 +11,9 @@ import org.hibernate.validator.constraints.Email;
 
 import library.models.form.RegisterForm;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="user")
@@ -23,10 +25,12 @@ public class User {
 	private int id;
 	
 	@NotNull
+	@Size(min=4)
 	@Column(name="login")
 	private String login;
 	
 	@NotNull
+	@Size(min=6)
 	@Column(name="password")
 	private String password;
 	

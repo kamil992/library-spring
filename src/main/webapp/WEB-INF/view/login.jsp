@@ -1,5 +1,4 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -17,40 +16,25 @@
 
 <h3><a id="title" href="${pageContext.request.contextPath}/">Library</a></h3>
 <hr>
-   		
-	
 	<div id="container">
 	<center>
-	<h2>Registration</h2>
+	<h2>Login</h2>
 
-	<form:form modelAttribute="userToRegister" action="register" method="POST">
-	
-		<form:hidden path="id" />
-
+	<form:form  action="login" method="POST">
 		<table>
 			<tbody>
 				<tr>
-					<td><label>Login:</label></td>
-					<td><form:input path="login"/></td>
-					<c:if test="${checkLogin != null}">
-   						<p style="color: red;"><c:out value = "${checkLogin}"/></p>
-   					</c:if>
-				</tr>
-				<tr>
 					<td><label>Email:</label></td>
-					<td><form:input path="email"/></td>
-					<c:if test="${checkEmail != null}">
-   						<p style="color: red;"><c:out value = "${checkEmail}"/></p>
-   					</c:if>
+					<td><input name="email"/></td>
 				</tr>
 				<tr>
 					<td><label>Password:</label></td>
-					<td><form:input path="password"/></td>
+					<td><input name="password"/></td>
 				</tr>
 			</tbody>
 		</table><br/>
 				
-				<input type="submit" value="REGISTER" class="save"/>
+				<input type="submit" value="LOGIN"/>
 				
 	</form:form>
 	</center>	

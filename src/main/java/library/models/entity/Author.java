@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import library.models.services.BookService;
 
 @Entity
 @Table(name = "author")

@@ -58,4 +58,12 @@ public class UserRepository implements UserDao{
 		return false;
 	}
 
+	@Override
+	public List<User> getAllUsers() {
+		Session session = sessionFactory.getCurrentSession();
+		
+		List<User> userList = session.createQuery("from User", User.class).getResultList();
+		return userList;
+	}
+
 }

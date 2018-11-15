@@ -13,7 +13,7 @@
 <body>
 
 <h3><a id="title" href="${pageContext.request.contextPath}/">Library</a></h3>
-<a href="${pageContext.request.contextPath}/register">registration</a>
+<a id="register" href="${pageContext.request.contextPath}/register">registration </a> | <a href="${pageContext.request.contextPath}/login">login </a>
 <hr>
 
 <div class="container">
@@ -106,6 +106,9 @@
 	}
 	#categ{
 		font-size: 12px;
+	}
+	#register{
+		margin-left: 20px;
 	}
 	
 </style>
