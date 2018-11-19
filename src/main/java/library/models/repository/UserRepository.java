@@ -23,7 +23,7 @@ public class UserRepository implements UserDao{
 	
 
 	@Override
-	public RegisterStatus registerUser(RegisterForm registerForm) {
+	public RegisterStatus addUser(RegisterForm registerForm) {
 		Session session = sessionFactory.getCurrentSession();
 		
 		List<User> userLogin = session.createQuery("from User where login='" + registerForm.getLogin()+ "'", User.class)

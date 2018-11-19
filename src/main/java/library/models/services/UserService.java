@@ -28,7 +28,7 @@ public class UserService {
 	
 	@Transactional
 	public RegisterStatus registerUser(RegisterForm registerForm){
-		return userRepository.registerUser(registerForm);
+		return userRepository.addUser(registerForm);
 	}
 	
 	
