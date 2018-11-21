@@ -15,9 +15,25 @@ import lombok.Setter;
 @Service
 public class UserService {
 	
-	@Getter @Setter
+	
 	private boolean isLogin;
 	
+	public boolean isLogin() {
+		return isLogin;
+	}
+
+	public void setLogin(boolean isLogin) {
+		this.isLogin = isLogin;
+	}
+
+	public UserRepository getUserRepository() {
+		return userRepository;
+	}
+
+	public void setUserRepository(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
+
 	@Autowired
 	private UserRepository userRepository;
 	
@@ -31,6 +47,10 @@ public class UserService {
 		return userRepository.addUser(registerForm);
 	}
 	
+	@Transactional
+	public User getUser(String email, String password){
+		return userRepository.getUser(email, password);
+	}
 	
 
 }

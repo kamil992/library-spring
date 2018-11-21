@@ -1,19 +1,20 @@
 package library.controllers;
 
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import library.models.entity.User;
 import library.models.form.RegisterForm;
 import library.models.services.RegisterStatus;
 import library.models.services.UserService;
-import lombok.Getter;
-import lombok.Setter;
+
 
 @Controller
 public class RegisterController {
@@ -29,8 +30,15 @@ public class RegisterController {
 	}
 	
 	@PostMapping("/register")
-	public String registerUser(@ModelAttribute("userToRegister") RegisterForm registerForm,
+	public String registerUser(@Valid @ModelAttribute("userToRegister") RegisterForm registerForm,
+			BindingResult bindingResult,
 			Model model){
+		
+		if(bindingResult.hasErrors()){
+			model.addAttribute("userToRegister", new RegisterForm());
+			model.addAttribute("registerError","Login must has min 4 signs, password 6. Email should has form like this: abc@abc.com etc.");
+			return "registration";
+		}
 		
 		RegisterStatus register = userService.registerUser(registerForm);
 		

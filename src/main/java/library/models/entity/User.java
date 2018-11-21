@@ -6,12 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.hibernate.validator.constraints.Email;
-
 import library.models.form.RegisterForm;
-
-import javax.validation.constraints.Min;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -24,18 +20,18 @@ public class User {
 	@Column(name="id")
 	private int id;
 	
-	@NotNull
-	@Size(min=4)
+	@NotNull(message="is required")
+	@Size(min=4, message="min 4 signs")
 	@Column(name="login")
 	private String login;
 	
-	@NotNull
-	@Size(min=6)
+	@NotNull(message="is required")
+	@Size(min=6, message="min 6 signs")
 	@Column(name="password")
 	private String password;
 	
-	@NotNull
-	@Email
+	@NotNull(message="is required")
+	@Email(message="abc@abc.com etc.")
 	@Column(name="email")
 	private String email;
 	

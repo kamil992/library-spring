@@ -9,10 +9,6 @@ import library.models.services.RegisterStatus;
 public interface UserDao{
 	
 	public List<User> getAllUsers();
-	
 	public RegisterStatus addUser(RegisterForm registerForm);
-	
-	public boolean existsByLogin(String login);
-	public boolean existsByEmail(String email);
-
+	public User getUser(String email, String password);
 }

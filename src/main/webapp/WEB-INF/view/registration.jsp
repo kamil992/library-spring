@@ -24,8 +24,13 @@
 	<h2>Registration</h2>
 
 	<form:form modelAttribute="userToRegister" action="register" method="POST">
-	
 		<form:hidden path="id" />
+		
+		<c:if test="${registerError != null}">
+			<div class="alert alert-danger col-xs-offset-1 col-xs-10">
+				${registerError}
+			</div>
+		</c:if>
 
 		<table>
 			<tbody>

@@ -46,24 +46,23 @@ public class UserRepository implements UserDao{
 	}
 
 	@Override
-	public boolean existsByLogin(String login) {
-		Session session = sessionFactory.getCurrentSession();
-		Query<User> user = session.createQuery("",User.class);
-		return false;
-	}
-
-	@Override
-	public boolean existsByEmail(String email) {
-		
-		return false;
-	}
-
-	@Override
 	public List<User> getAllUsers() {
 		Session session = sessionFactory.getCurrentSession();
 		
 		List<User> userList = session.createQuery("from User", User.class).getResultList();
 		return userList;
+	}
+
+	//todo
+	@Override
+	public User getUser(String email, String password) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		User user = session
+				.createQuery("from User where email='" + email + "' and password='" + password + "'", User.class)
+				.getSingleResult();
+		
+		return user;	
 	}
 
 }
