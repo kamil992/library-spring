@@ -20,12 +20,10 @@ public class User {
 	@Column(name="id")
 	private int id;
 	
-	@NotNull(message="is required")
 	@Size(min=4, message="min 4 signs")
 	@Column(name="login")
 	private String login;
 	
-	@NotNull(message="is required")
 	@Size(min=6, message="min 6 signs")
 	@Column(name="password")
 	private String password;
