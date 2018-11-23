@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import library.models.form.RegisterForm;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -20,26 +19,19 @@ public class User {
 	@Column(name="id")
 	private int id;
 	
-	@Size(min=4, message="min 4 signs")
+	@Size(min=4, message="Login must has minimum 4 signs.")
 	@Column(name="login")
 	private String login;
 	
-	@Size(min=6, message="min 6 signs")
+	@Size(min=6, message="Password must has minimum 6 signs")
 	@Column(name="password")
 	private String password;
 	
-	@NotNull(message="is required")
-	@Email(message="abc@abc.com etc.")
+	@NotNull(message="Is required!")
+	@Email(message="Invalid email pattern! It must be like : abc@abc.com etc.")
 	@Column(name="email")
 	private String email;
 	
-	public User(){}
-	
-	public User(RegisterForm registerForm){
-		this.login = registerForm.getLogin();
-		this.password = registerForm.getPassword();
-		this.email = registerForm.getEmail();
-	}
 
 	public int getId() {
 		return id;

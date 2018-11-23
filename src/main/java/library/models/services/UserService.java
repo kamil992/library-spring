@@ -7,10 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import library.models.entity.User;
-import library.models.form.RegisterForm;
 import library.models.repository.UserRepository;
-import lombok.Getter;
-import lombok.Setter;
 
 @Service
 public class UserService {
@@ -43,8 +40,8 @@ public class UserService {
 	}
 	
 	@Transactional
-	public RegisterStatus registerUser(RegisterForm registerForm){
-		return userRepository.addUser(registerForm);
+	public RegisterStatus registerUser(User user){
+		return userRepository.addUser(user);
 	}
 	
 	@Transactional

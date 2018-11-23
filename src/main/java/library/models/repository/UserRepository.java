@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 
 import library.models.dao.UserDao;
 import library.models.entity.User;
-import library.models.form.RegisterForm;
 import library.models.services.RegisterStatus;
 
 @Repository
@@ -23,22 +22,22 @@ public class UserRepository implements UserDao{
 	
 
 	@Override
-	public RegisterStatus addUser(RegisterForm registerForm) {
+	public RegisterStatus addUser(User user) {
 		Session session = sessionFactory.getCurrentSession();
 		
-		List<User> userLogin = session.createQuery("from User where login='" + registerForm.getLogin()+ "'", User.class)
+		List<User> userLogin = session.createQuery("from User where login='" + user.getLogin()+ "'", User.class)
 				.getResultList();
 		if(!userLogin.isEmpty()){
 			return RegisterStatus.BUSY_LOGIN;
 		}
 		
-		List<User> userEmail = session.createQuery("from User where email='" + registerForm.getEmail()+ "'", User.class)
+		List<User> userEmail = session.createQuery("from User where email='" + user.getEmail()+ "'", User.class)
 				.getResultList();
 		if(!userEmail.isEmpty()){
 			return RegisterStatus.BUSY_EMAIL;
 		}
 		
-		User newUser = new User(registerForm);
+		User newUser = new User();
 		
 		session.save(newUser);
 		return RegisterStatus.OK;
