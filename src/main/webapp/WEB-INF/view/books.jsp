@@ -13,7 +13,18 @@
 <body>
 
 <h3><a id="title" href="${pageContext.request.contextPath}/">Library</a></h3>
-<a id="register" href="${pageContext.request.contextPath}/register">registration </a> | <a href="${pageContext.request.contextPath}/login">login </a>
+<div class="signs">
+<table>
+<tr>
+<td>
+<a id="register" href="${pageContext.request.contextPath}/register">sign up </a>  
+</td>
+<td>
+<a href="${pageContext.request.contextPath}/login">sign in </a>
+</td>
+</tr>
+</table>
+</div>
 <hr>
 
 <div class="container">
@@ -23,7 +34,7 @@
 	<div id="search">	   
 	<form:form action="search" method="POST">
             <input type="text" name="searchingTitle" />                
-            <input type="submit" value="Search" class="add-button" />
+            <button type="submit" class="btn btn-secondary" value="Search">Search</button>
     </form:form><br>
     </div>
     
@@ -35,11 +46,9 @@
           </c:forEach>    
     </div>
     </div>
-
-         
-         
+   
+   <div class="books">
 	<c:forEach var="books" items="${booksList}">
-	
 	<div id="card" class="card w-100">
   		<div class="card-body">
     		<div class="card-title">
@@ -69,7 +78,7 @@
 	</div>
 	
 	</c:forEach>
-
+</div>
 </div>	
 </div>
 
@@ -109,6 +118,10 @@
 	}
 	#register{
 		margin-left: 20px;
+		margin-right: 30px;
+	}
+	.signs{
+		
 	}
 	
 </style>

@@ -16,6 +16,7 @@
 <body>
 
 <h3><a id="title" href="${pageContext.request.contextPath}/">Library</a></h3>
+<a id="login" href="${pageContext.request.contextPath}/login">sign in </a>
 <hr>
    		
 	
@@ -67,6 +68,9 @@
 	}
 	a:link{
 		text-decoration: none;
+	}
+	#login{
+		margin-left: 20px
 	}
 
 </style>

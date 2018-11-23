@@ -76,6 +76,9 @@ public class LibraryController {
 	public String searchBook(@RequestParam("searchingTitle") String searchingTitle,
 							 Model model){
 		
+		List<Category> categoryList = categoryServce.getCategoryList();
+		model.addAttribute("categories", categoryList);
+		
 		List<Book> bookList = bookService.getSearchingBook(searchingTitle);
 		model.addAttribute("booksList", bookList);
 		

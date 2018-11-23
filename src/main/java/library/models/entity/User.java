@@ -27,7 +27,6 @@ public class User {
 	@Column(name="password")
 	private String password;
 	
-	@NotNull(message="Is required!")
 	@Email(message="Invalid email pattern! It must be like : abc@abc.com etc.")
 	@Column(name="email")
 	private String email;
