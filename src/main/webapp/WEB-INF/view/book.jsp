@@ -17,6 +17,35 @@
 
 <body>
 <h3 id="title"><a href="${pageContext.request.contextPath}/">Library</a></h3>
+
+<c:choose>
+<c:when test="${isLogin == false}">
+<div class="signs">
+<table>
+<tr>
+<td>
+<a id="register" href="${pageContext.request.contextPath}/register">sign up </a>  
+</td>
+<td>
+<a href="${pageContext.request.contextPath}/login">sign in </a>
+</td>
+</tr>
+</table>
+</div>
+</c:when>
+<c:when test="${isLogin == true}">
+	<table>
+		<tr>
+			<td>
+				<a id="register" href="${pageContext.request.contextPath}/logout">logout</a>  
+			</td>
+			<td>
+				${userLogin}
+			</td>
+		</tr>
+	</table>
+</c:when>
+</c:choose>
 <hr>
 	<div class="container">
 		<div class="row">
@@ -50,6 +79,10 @@
 		
 		a:link{
 		text-decoration: none;
+	}
+	#register{
+		margin-left: 20px;
+		margin-right: 30px;
 	}
 	
 	</style>
