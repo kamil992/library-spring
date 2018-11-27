@@ -45,13 +45,7 @@ public class LibraryController {
 	}
 	
 	@GetMapping("/")
-	public String getAllBooks(){	
-		//List<Book> booksList = bookService.getBooksList();
-		//model.addAttribute("booksList", booksList);
-		//model.addAttribute("isLogin", userService.isLogin());
-		//to show all categories on main page
-		//List<Category> categoryList = categoryServce.getCategoryList();
-		//model.addAttribute("categories", categoryList);		
+	public String getAllBooks(){			
 		return "books";
 	}
 	
