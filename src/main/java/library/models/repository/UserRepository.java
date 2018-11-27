@@ -25,21 +25,19 @@ public class UserRepository implements UserDao{
 	public RegisterStatus addUser(User user) {
 		Session session = sessionFactory.getCurrentSession();
 		
-		List<User> userLogin = session.createQuery("from User where login='" + user.getLogin()+ "'", User.class)
-				.getResultList();
-		if(!userLogin.isEmpty()){
+		User userLogin = session.createQuery("from User where login='" + user.getLogin()+ "'", User.class)
+				.uniqueResult();
+		if(userLogin != null){
 			return RegisterStatus.BUSY_LOGIN;
 		}
 		
-		List<User> userEmail = session.createQuery("from User where email='" + user.getEmail()+ "'", User.class)
-				.getResultList();
-		if(!userEmail.isEmpty()){
+		User userEmail = session.createQuery("from User where email='" + user.getEmail()+ "'", User.class)
+				.uniqueResult();
+		if(userEmail != null){
 			return RegisterStatus.BUSY_EMAIL;
 		}
 		
-		User newUser = new User();
-		
-		session.save(newUser);
+		session.save(user);
 		return RegisterStatus.OK;
 		
 	}
@@ -52,14 +50,13 @@ public class UserRepository implements UserDao{
 		return userList;
 	}
 
-	//todo
 	@Override
 	public User getUser(String email, String password) {
 		Session session = sessionFactory.getCurrentSession();
 		
 		User user = session
 				.createQuery("from User where email='" + email + "' and password='" + password + "'", User.class)
-				.getSingleResult();
+				.uniqueResult();
 		
 		return user;	
 	}

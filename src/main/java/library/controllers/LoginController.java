@@ -23,7 +23,7 @@ public class LoginController {
 		return "login";
 	}
 	
-	//todo
+
 	@PostMapping("/login")
 	public String postLogin(@RequestParam("email") String email,
 			@RequestParam("password") String password,
@@ -38,7 +38,16 @@ public class LoginController {
 			model.addAttribute("userNotFound", "You entered incorrect email or password!");
 			return "login";
 		}
+	
+		model.addAttribute("isLogin", userService.isLogin());
 		
+		return "redirect:/";
+	}
+	
+	@GetMapping("/logout")
+	public String logout(Model model){
+		userService.setLogin(false);
+		model.addAttribute("isLogin", userService.isLogin());
 		return "redirect:/";
 	}
 }

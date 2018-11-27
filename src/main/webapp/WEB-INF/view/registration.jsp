@@ -16,7 +16,7 @@
 <body>
 
 <h3><a id="title" href="${pageContext.request.contextPath}/">Library</a></h3>
-<a id="login" href="${pageContext.request.contextPath}/login">sign in </a>
+<a id="log" href="${pageContext.request.contextPath}/login">sign in </a>
 <hr>
    		
 	
@@ -47,7 +47,7 @@
 				</tr>
 				<tr>
 					<td><label>Password:</label></td>
-					<td><form:input path="password"/></td>
+					<td><form:input type="password" path="password"/></td>
 					<form:errors path="password" cssClass="error"/>
 				</tr>
 			</tbody>
@@ -69,7 +69,7 @@
 	a:link{
 		text-decoration: none;
 	}
-	#login{
+	#log{
 		margin-left: 20px
 	}
 

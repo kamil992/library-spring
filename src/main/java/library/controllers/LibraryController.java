@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +19,7 @@ import library.models.entity.Category;
 import library.models.services.AuthorService;
 import library.models.services.BookService;
 import library.models.services.CategoryService;
+import library.models.services.UserService;
 
 @Controller
 public class LibraryController {
@@ -31,16 +33,25 @@ public class LibraryController {
 	@Autowired
 	private CategoryService categoryServce;
 	
+	@Autowired
+	private UserService userService;
+	
+	@ModelAttribute
+	public Model setModel(Model model){
+		model.addAttribute("isLogin", userService.isLogin());
+		model.addAttribute("booksList", bookService.getBooksList());
+		model.addAttribute("categories", categoryServce.getCategoryList());
+		return model;	
+	}
 	
 	@GetMapping("/")
-	public String getAllBooks(Model model){	
-		List<Book> booksList = bookService.getBooksList();
-		model.addAttribute("booksList", booksList);
-		
+	public String getAllBooks(){	
+		//List<Book> booksList = bookService.getBooksList();
+		//model.addAttribute("booksList", booksList);
+		//model.addAttribute("isLogin", userService.isLogin());
 		//to show all categories on main page
-		List<Category> categoryList = categoryServce.getCategoryList();
-		model.addAttribute("categories", categoryList);
-		
+		//List<Category> categoryList = categoryServce.getCategoryList();
+		//model.addAttribute("categories", categoryList);		
 		return "books";
 	}
 	

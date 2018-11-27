@@ -15,6 +15,7 @@
 <body>
 
 <h3><a id="title" href="${pageContext.request.contextPath}/">Library</a></h3>
+<a id="register" href="${pageContext.request.contextPath}/register">sign up </a> 
 <hr>
 	<div id="container">
 	<center>
@@ -29,7 +30,7 @@
 				</tr>
 				<tr>
 					<td><label>Password:</label></td>
-					<td><input name="password"/></td>
+					<td><input type="password" name="password"/></td>
 				</tr>
 			</tbody>
 		</table><br/>
@@ -49,6 +50,9 @@
 	}
 	a:link{
 		text-decoration: none;
+	}
+	#register{
+		margin-left: 20px;
 	}
 
 </style>

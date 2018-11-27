@@ -13,6 +13,8 @@
 <body>
 
 <h3><a id="title" href="${pageContext.request.contextPath}/">Library</a></h3>
+<c:choose>
+<c:when test="${isLogin == false}">
 <div class="signs">
 <table>
 <tr>
@@ -25,6 +27,11 @@
 </tr>
 </table>
 </div>
+</c:when>
+<c:when test="${isLogin == true}">
+	<a id="register" href="${pageContext.request.contextPath}/logout">logout</a>
+</c:when>
+</c:choose>
 <hr>
 
 <div class="container">
