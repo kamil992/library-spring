@@ -21,6 +21,10 @@
 	<center>
 	<h2>Login</h2>
 
+	<c:if test="${userNotFound != null}" class="text-danger">
+            <small>${userNotFound}</small>
+    </c:if>
+    
 	<form:form  action="login" method="POST">
 		<table>
 			<tbody>

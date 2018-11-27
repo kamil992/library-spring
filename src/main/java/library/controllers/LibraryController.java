@@ -1,7 +1,6 @@
 package library.controllers;
 
-import java.util.ArrayList;
-import java.util.Collections;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +40,8 @@ public class LibraryController {
 		model.addAttribute("isLogin", userService.isLogin());
 		model.addAttribute("booksList", bookService.getBooksList());
 		model.addAttribute("categories", categoryServce.getCategoryList());
+		//model.addAttribute("userLogin", userService.getUser().getLogin());
+	
 		return model;	
 	}
 	

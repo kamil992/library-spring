@@ -56,7 +56,7 @@ public class UserRepository implements UserDao{
 		
 		User user = session
 				.createQuery("from User where email='" + email + "' and password='" + password + "'", User.class)
-				.uniqueResult();
+				.getSingleResult();
 		
 		return user;	
 	}

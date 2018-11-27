@@ -14,14 +14,7 @@ public class UserService {
 	
 	
 	private boolean isLogin;
-	
-	public boolean isLogin() {
-		return isLogin;
-	}
-
-	public void setLogin(boolean isLogin) {
-		this.isLogin = isLogin;
-	}
+	private User user;
 
 	public UserRepository getUserRepository() {
 		return userRepository;
@@ -49,5 +42,21 @@ public class UserService {
 		return userRepository.getUser(email, password);
 	}
 	
+	
+// getters/setters
+	public User getUser() {
+		return user;
+	}
 
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public boolean isLogin() {
+		return isLogin;
+	}
+
+	public void setLogin(boolean isLogin) {
+		this.isLogin = isLogin;
+	}
 }

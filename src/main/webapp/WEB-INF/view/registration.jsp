@@ -35,7 +35,7 @@
 					<c:if test="${checkLogin != null}">
    						<p style="color: red;"><c:out value = "${checkLogin}"/></p>
    					</c:if>
-   					<form:errors style="color: red;" path="login" cssClass="error"/></br>
+   					<small><form:errors path="login" cssClass="error text-danger"/></small></br>
 				</tr>
 				<tr>
 					<td><label>Email:</label></td>
@@ -43,12 +43,12 @@
 					<c:if test="${checkEmail != null}">
    						<p style="color: red;"><c:out value = "${checkEmail}"/></p>
    					</c:if>
-   					<form:errors style="color: red;" path="email" cssClass="error"/><br/>
+   					<small><form:errors path="email" cssClass="error text-danger"/></small><br/>
 				</tr>
 				<tr>
 					<td><label>Password:</label></td>
 					<td><form:input type="password" path="password"/></td>
-					<form:errors path="password" cssClass="error"/>
+					<small><form:errors path="password" cssClass="error text-danger"/></small>
 				</tr>
 			</tbody>
 		</table><br/>

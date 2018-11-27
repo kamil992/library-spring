@@ -29,7 +29,16 @@
 </div>
 </c:when>
 <c:when test="${isLogin == true}">
-	<a id="register" href="${pageContext.request.contextPath}/logout">logout</a>
+	<table>
+		<tr>
+			<td>
+				<a id="register" href="${pageContext.request.contextPath}/logout">logout</a>  
+			</td>
+			<td>
+				${userLogin}
+			</td>
+		</tr>
+	</table>
 </c:when>
 </c:choose>
 <hr>

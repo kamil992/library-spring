@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -17,9 +18,9 @@ public class LoginController {
 	@Autowired
 	private UserService userService;
 	
+	
 	@GetMapping("/login")
-	public String getLogin(Model model){
-		
+	public String getLogin(Model model){		
 		return "login";
 	}
 	
@@ -31,23 +32,21 @@ public class LoginController {
 		User user;
 		try{
 			user = userService.getUser(email, password);
-			model.addAttribute("userLogin", user.getLogin());
 			userService.setLogin(true);
+			userService.setUser(user);	
+			return "redirect:/";
 		}
 		catch(Exception e){
 			model.addAttribute("userNotFound", "You entered incorrect email or password!");
 			return "login";
 		}
-	
-		model.addAttribute("isLogin", userService.isLogin());
 		
-		return "redirect:/";
+		
 	}
 	
 	@GetMapping("/logout")
 	public String logout(Model model){
 		userService.setLogin(false);
-		model.addAttribute("isLogin", userService.isLogin());
 		return "redirect:/";
 	}
 }
