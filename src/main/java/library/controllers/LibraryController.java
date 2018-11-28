@@ -40,7 +40,9 @@ public class LibraryController {
 		model.addAttribute("isLogin", userService.isLogin());
 		model.addAttribute("booksList", bookService.getBooksList());
 		model.addAttribute("categories", categoryServce.getCategoryList());
-		//model.addAttribute("userLogin", userService.getUser().getLogin()); 
+		if(userService.isLogin() == true){
+		model.addAttribute("userLogin", userService.getUser().getLogin()); 
+		}
 	
 		return model;	
 	}

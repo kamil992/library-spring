@@ -33,7 +33,7 @@ public class LoginController {
 		try{
 			user = userService.getUser(email, password);
 			userService.setLogin(true);
-			userService.setUser(user);	
+			userService.setUser(user);
 			return "redirect:/";
 		}
 		catch(Exception e){
