@@ -14,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Table(name="book")
 @Entity
@@ -24,16 +25,19 @@ public class Book {
 	@Column(name="id")
 	private int id;
 	
+	@NotNull
 	@Column(name="title")
 	private String title;
 	
-	
+	@NotNull
 	@Column(name="publication_year")
 	private int year;
 	
+	@NotNull
 	@Column(name="publishing_house")
 	private String publisher;
 	
+	@NotNull
 	@Column(name="description")
 	private String description;
 	

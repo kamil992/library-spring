@@ -72,7 +72,7 @@ public class BookRepository implements BookDao {
 			return NewBookStatus.ALREADY_EXIST;
 		}
 		
-		
+		session.save(book);
 		return NewBookStatus.OK;
 	}
 

@@ -18,6 +18,7 @@ import library.models.entity.Category;
 import library.models.services.AuthorService;
 import library.models.services.BookService;
 import library.models.services.CategoryService;
+import library.models.services.NewBookStatus;
 import library.models.services.UserService;
 
 @Controller
@@ -104,18 +105,13 @@ public class LibraryController {
 			model.addAttribute("author", author);
 		}catch(NullPointerException e){
 			return "books";
-		}
-		//let's get all authors books
-//		List<Book> booksList = bookService.getBooksList();
-//		List<Book> list = getAuthorsBooks(booksList, id);	
+		}	
 		List<Book> list = bookService.getAuthorBooks(id);
 		model.addAttribute("listOfBooks", list);
 		
 	
 		return "/author";
 	}
-	
-	
 //	private static List<Book> getAuthorsBooks(List<Book> listOfBooks, int authorId){
 //		List<Book> list = new ArrayList<>();
 //		for(Book b : listOfBooks){
@@ -126,6 +122,26 @@ public class LibraryController {
 //		Collections.sort(list, (o1,o2) -> o1.getYear() - o2.getYear());
 //		return list;
 //	}
+	
+	@GetMapping("/addBook")
+	public String getNewBook(Model model){
+		model.addAttribute("newBook", new Book());
+		
+		return "newBook";
+	}
+	
+	@PostMapping("/addBook")
+	public String addNewBook(@ModelAttribute("newBook") Book book,
+			Model model){
+		
+		NewBookStatus bookStatus = bookService.addNewBook(book);
+		
+		if(bookStatus == bookStatus.ALREADY_EXIST){
+			return "newBook";
+		}
+		
+		return "redirect:/";
+	}
 	
 	
 }
