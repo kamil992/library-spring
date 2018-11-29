@@ -50,6 +50,10 @@
 <div id="container">
 	<center>
 	<h2>Add New Book</h2>
+	
+	<!--<c:if test="${checkIfExist != null}">
+   			<p style="color: red;"><c:out value="${checkIfExist}"/></p>
+   	</c:if>!-->
 
 	<form:form modelAttribute="newBook" action="addBook" method="POST">
 		
@@ -119,9 +123,7 @@ a:link{
 		margin-left: 20px;
 		margin-right: 30px;
 	}
-label{
-	margin: 10px;
-	}
+
 </style>
 
 </body>

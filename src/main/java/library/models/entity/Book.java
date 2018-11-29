@@ -14,7 +14,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+
 
 @Table(name="book")
 @Entity
@@ -57,13 +61,6 @@ public class Book {
 	
 	public Book(){}
 	
-	public Book(String title, Author author, int year, String publisher, String description){
-		this.author = author;
-		this.title = title;
-		this.year = year;
-		this.publisher = publisher;
-		this.description = description;
-	}
 
 	public int getId() {
 		return id;

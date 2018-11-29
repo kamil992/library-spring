@@ -4,9 +4,12 @@ package library.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,7 +45,7 @@ public class LibraryController {
 		model.addAttribute("isLogin", userService.isLogin());
 		model.addAttribute("booksList", bookService.getBooksList());
 		model.addAttribute("categories", categoryServce.getCategoryList());
-		
+		model.addAttribute("authorsList", authorService.getAuthorsList());
 		if(userService.isLogin() == true){
 			model.addAttribute("userLogin", userService.getUser().getLogin()); 
 		}
@@ -127,17 +130,22 @@ public class LibraryController {
 	@GetMapping("/addBook")
 	public String getNewBook(Model model){
 		model.addAttribute("newBook", new Book());
-		model.addAttribute("authorsList", authorService.getAuthorsList());
+		
 		return "newBook";
 	}
 	
-	//todo
+	//todo validation
 	@PostMapping("/addBook")
-	public String addNewBook(@ModelAttribute("newBook") Book book,
+	public String addNewBook(@Valid @ModelAttribute("newBook") Book book,
 			@RequestParam("authorName") String authorName,
 			@RequestParam("categoryName") String categoryName,
+			BindingResult bindingResult,
 			Model model){
 		
+		if(bindingResult.hasErrors()){
+			model.addAttribute("errors", "You have empty places to fill.");
+			return "newBook";
+		}
 		//set up author
 		Author author = authorService.getAuthor(authorName);
 		book.setAuthor(author);
@@ -148,15 +156,23 @@ public class LibraryController {
 		List<Category> categoryList = new ArrayList<Category>();
 		categoryList.add(category);
 		book.setCategories(categoryList);
-				
+		
+		if(book.getPicture().equals("") || book.getPicture() == null){
+			book.setPicture(setUpImageToEmpty());
+		}
+		
 		NewBookStatus bookStatus = bookService.addNewBook(book);
 		
 		if(bookStatus == bookStatus.ALREADY_EXIST){
+			model.addAttribute("checkIfExist", "Book already exists.");
 			return "newBook";
 		}
 
 		return "redirect:/";
 	}
 	
-	
+	private static String setUpImageToEmpty(){
+		String image = "https://upload.wikimedia.org/wikipedia/en/f/f9/No-image-available.jpg";	
+		return image;
+	}
 }
