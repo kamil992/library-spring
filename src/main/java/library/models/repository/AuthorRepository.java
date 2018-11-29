@@ -29,7 +29,7 @@ public class AuthorRepository implements AuthorDao {
 	@Override
 	public Author getAuthor(String fullName) {
 		Session session = sessionFactory.getCurrentSession();
-		Author author = session.createQuery("form Author where full_name='" + fullName + "';", 
+		Author author = session.createQuery("from Author where full_name='" + fullName + "'", 
 				Author.class).uniqueResult();
 		
 		return author;

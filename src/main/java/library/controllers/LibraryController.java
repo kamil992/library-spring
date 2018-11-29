@@ -1,6 +1,7 @@
 package library.controllers;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -126,20 +127,34 @@ public class LibraryController {
 	@GetMapping("/addBook")
 	public String getNewBook(Model model){
 		model.addAttribute("newBook", new Book());
-		
+		model.addAttribute("authorsList", authorService.getAuthorsList());
 		return "newBook";
 	}
 	
+	//todo
 	@PostMapping("/addBook")
 	public String addNewBook(@ModelAttribute("newBook") Book book,
+			@RequestParam("authorName") String authorName,
+			@RequestParam("categoryName") String categoryName,
 			Model model){
 		
+		//set up author
+		Author author = authorService.getAuthor(authorName);
+		book.setAuthor(author);
+		
+		//set up category
+		Category category = categoryServce.findCategory(categoryName);
+		//get category from a list because of categories an book are many to many. in feature a should something do with that ;/
+		List<Category> categoryList = new ArrayList<Category>();
+		categoryList.add(category);
+		book.setCategories(categoryList);
+				
 		NewBookStatus bookStatus = bookService.addNewBook(book);
 		
 		if(bookStatus == bookStatus.ALREADY_EXIST){
 			return "newBook";
 		}
-		
+
 		return "redirect:/";
 	}
 	

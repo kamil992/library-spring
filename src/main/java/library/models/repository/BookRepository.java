@@ -66,8 +66,8 @@ public class BookRepository implements BookDao {
 	public NewBookStatus addNewBook(Book book) {
 		Session session = sessionFactory.getCurrentSession();
 		
-		Book newBook = session.createQuery("form Book where title='" + book.getTitle()+"' and"
-				+ "author='" + book.getAuthor() + "';", Book.class).uniqueResult();
+		Book newBook = session.createQuery("from Book where title='" + book.getTitle()+"' and"
+				+ " author_id='" + book.getAuthor().getId() + "'", Book.class).uniqueResult();
 		if(newBook != null){
 			return NewBookStatus.ALREADY_EXIST;
 		}

@@ -58,29 +58,48 @@
 			<tbody>
 				<tr>
 					<td><label>Title:</label></td>
-					<td><form:input path="title"/></td>
-					<c:if test="${checkLogin != null}">
-   						<p style="color: red;"><c:out value = "${checkLogin}"/></p>
-   					</c:if>
-   					<small><form:errors path="login" cssClass="error text-danger"/></small></br>
+					<td><form:input id="l" path="title"/></td>
 				</tr>
 				<tr>
 					<td><label>Author:</label></td>
-					<td><form:input path="author"/></td>
-					<c:if test="${checkEmail != null}">
-   						<p style="color: red;"><c:out value = "${checkEmail}"/></p>
-   					</c:if>
-   					<small><form:errors path="email" cssClass="error text-danger"/></small><br/>
+					<td>
+						<select name="authorName">
+							<c:forEach var="author" items="${authorsList}">
+							 	<option>${author.fullName}</option>
+							</c:forEach>
+						</select>
+					</td>
 				</tr>
 				<tr>
-					<td><label>Password:</label></td>
-					<td><form:input type="password" path="password"/></td>
-					<small><form:errors path="password" cssClass="error text-danger"/></small>
+					<td><label>Year of publication:</label></td>
+					<td><form:input type="number" path="year"/></td>
+				</tr>
+				<tr>
+					<td><label>Publishing house:</label></td>
+					<td><form:input path="publisher"/></td>
+				</tr>
+				<tr>
+					<td><label>Category:</label></td>
+					<td>
+						<select name="categoryName">
+							<c:forEach var="category" items="${categories}">
+							 	<option>${category.name}</option>
+							</c:forEach>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td><label>Picture:</label></td>
+					<td><form:input path="picture"/></td>
+				</tr>
+				<tr>
+					<td><label>Description:</label></td>
+					<td><form:input path="description"/></td>
 				</tr>
 			</tbody>
 		</table><br/>
 				
-				<input type="submit" value="REGISTER" class="save"/>
+				<input type="submit" value="ADD BOOK" class="save"/>
 				
 	</form:form>
 	</center>	
@@ -99,6 +118,9 @@ a:link{
 #register{
 		margin-left: 20px;
 		margin-right: 30px;
+	}
+label{
+	margin: 10px;
 	}
 </style>
 
