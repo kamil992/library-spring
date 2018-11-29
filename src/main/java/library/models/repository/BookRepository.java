@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import library.models.dao.BookDao;
 import library.models.entity.Book;
+import library.models.services.NewBookStatus;
 
 @Repository
 public class BookRepository implements BookDao {
@@ -59,6 +60,20 @@ public class BookRepository implements BookDao {
 		List<Book> books = query.getResultList();
 		
 		return books;
+	}
+
+	@Override
+	public NewBookStatus addNewBook(Book book) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		Book newBook = session.createQuery("form Book where title='" + book.getTitle()+"' and"
+				+ "author='" + book.getAuthor() + "';", Book.class).uniqueResult();
+		if(newBook != null){
+			return NewBookStatus.ALREADY_EXIST;
+		}
+		
+		
+		return NewBookStatus.OK;
 	}
 
 }

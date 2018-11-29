@@ -35,5 +35,10 @@ public class BookService {
 	public List<Book> getSearchingBook(String searchingTitle){	
 		return bookRepository.searchBook(searchingTitle);
 	}
+	
+	@Transactional
+	public NewBookStatus addNewBook(Book book){
+		return bookRepository.addNewBook(book);
+	}
 
 }
