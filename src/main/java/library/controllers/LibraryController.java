@@ -109,7 +109,6 @@ public class LibraryController {
 
 		return "/author";
 	}
-//	private static List<Book> getAuthorsBooks(List<Book> listOfBooks, int authorId){
 
 	@GetMapping("/addBook")
 	public String getNewBook(Model model) {
